@@ -3,7 +3,7 @@ const myLibrary = [
     author: 'Test',
     pages: '300',
     read: 'yes',
-    }
+    },
     {title: 'lord of the rings',
     author: 'christian',
     pages: '300',

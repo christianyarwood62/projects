@@ -25,8 +25,8 @@ function Book(title, author, pages, literature) {
 }
 
 // Event: Add inputted books to the book array
-function addBookToLibrary(title, author, pages, read) {
-    const book = new Book(title, author, pages, read, id);
+function addBookToLibrary(title, author, pages, literature) {
+    const book = new Book(title, author, pages, literature);
     myLibrary.push(book);
     return book;
 }
@@ -71,3 +71,21 @@ function addBookToTable(book) {
 
 // Event: Display the row in the table
 document.addEventListener('DOMContentLoaded', displayBooks);
+
+// Event: Add a book
+document.querySelector('#book-form').addEventListener('submit', (e) => {
+    // Prevents the event listener from just submitting
+    e.preventDefault();
+
+    // get the form data
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pages = document.querySelector('#pages').value;
+    const literature = document.querySelector('#literature').value;
+
+    // Instantiate a book using object constructor
+    const book = new Book(title, author, pages, literature)
+
+    // Add a Book to the Table
+    addBookToTable(book);
+});

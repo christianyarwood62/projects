@@ -6,6 +6,42 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="document-container">
+        <h1 class="title">Book Library</h1>
+        <form id="book-form">
+            <div class="form-container">
+                <label for="title" class="form-label">Book Title:</label>
+                <input type="text" id="title" class="title-form"> 
+            </div>
+            <div class="form-container">
+                <label for="author" class="form-label">Author:</label>
+                <input type="text" id="author" class="form-box">
+            </div>
+            <div class="form-container">
+                <label for="pages" class="form-label">Number of Pages:</label>
+                <input type="text" id="pages" class="form-box">
+            </div>
+            <div class="form-container">
+                <label for="literature" class="form-label">Type of book:</label>
+                <input type="text" id="literature" class="form-box">
+            </div>
+            <button class="btn">Add Book</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Pages</th>
+                        <th>literature</th>
+                    </tr>
+                </thead>
+                <tbody class="books-table">
+
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -42,12 +42,30 @@ function addBookToTable(book) {
     const bookList = document.querySelector('#books-table');
     const row = document.createElement('tr');
     row.classList.add('table-row');
-    row.innerHTML = `
-        <td>${book.title}</td>
-        <td>${book.author}</td>
-        <td>${book.pages}</td>
-        <td>${book.literature}</td>
-    `;
+
+    const titleData = document.createElement('td');
+    titleData.textContent = `${book.title}`;
+    row.appendChild(titleData);
+
+    const authorData = document.createElement('td');
+    authorData.textContent = `${book.author}`;
+    row.appendChild(authorData);
+
+    const pagesData = document.createElement('td');
+    pagesData.textContent = `${book.pages}`;
+    row.appendChild(pagesData);
+
+    const literatureData = document.createElement('td');
+    literatureData.textContent = `${book.literature}`;
+    row.appendChild(literatureData);
+
+
+    // row.innerHTML = `
+    //     <td>${book.title}</td>
+    //     <td>${book.author}</td>
+    //     <td>${book.pages}</td>
+    //     <td>${book.literature}</td>
+    // `;
     bookList.appendChild(row);
 }
 

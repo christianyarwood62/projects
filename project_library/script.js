@@ -18,6 +18,10 @@ const myLibrary = [
 
 // Book Constructor
 function Book(title, author, pages, literature) {
+    if (!new.target) {
+        throw Error("You must use the 'new' keyword!");
+    }
+
     this.title = title,
     this.author = author,
     this.pages = pages,

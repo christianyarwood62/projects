@@ -28,6 +28,12 @@ function Book(title, author, pages, literature) {
     this.literature = literature;
 }
 
+// Function to clear the form inputs
+function clearInputs() {
+    document.querySelector('#title').value = '';
+    document.querySelector('#author').value = '';
+    document.querySelector('#pages').value = '';
+}
 // Event: Add inputted books to the book array
 function addBookToLibrary(title, author, pages, literature) {
     const book = new Book(title, author, pages, literature);
@@ -92,4 +98,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
     // Add a Book to the Table
     addBookToTable(book);
+
+    // Clear the inputs
+    clearInputs();
 });

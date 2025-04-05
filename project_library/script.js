@@ -69,6 +69,9 @@ function addBookToTable(book) {
     literatureData.textContent = `${book.literature}`;
     row.appendChild(literatureData);
 
+    const removeButton = document.createElement('td');
+    removeButton.textContent = `Remove`;
+    row.appendChild(removeButton);
 
     // row.innerHTML = `
     //     <td>${book.title}</td>
@@ -99,6 +102,8 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     // Add a Book to the Table
     addBookToTable(book);
 
-    // Clear the inputs
+    // Clear the inputs in the form
     clearInputs();
 });
+
+// Event: Remove a book

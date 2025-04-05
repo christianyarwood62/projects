@@ -5,12 +5,14 @@ const myLibrary = [
         author: 'J K Rowling',
         pages: '300',
         literature: 'Fiction',
+        id: crypto.randomUUID(),
     },
     {
         title: 'lord of the rings',
         author: 'christian',
         pages: '1000',
         literature: 'Non-Fiction',
+        id: crypto.randomUUID(),
     }
 ];
 
@@ -26,6 +28,10 @@ function Book(title, author, pages, literature) {
 function addBookToLibrary(title, author, pages, read) {
     const book = new Book(title, author, pages, read, id);
     myLibrary.push(book);
+    return book;
 }
+
+const books = myLibrary;
+books.forEach((book) => addBookToLibrary(book))
 
 // Event:

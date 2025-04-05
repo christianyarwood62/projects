@@ -1,18 +1,18 @@
 // Library of inputted books
 const myLibrary = [
     {
-        title:'harry potter',
+        title: 'harry potter',
         author: 'J K Rowling',
         pages: '300',
         literature: 'Fiction',
-        id: crypto.randomUUID(),
+        // id: crypto.randomUUID(),
     },
     {
         title: 'lord of the rings',
         author: 'christian',
         pages: '1000',
         literature: 'Non-Fiction',
-        id: crypto.randomUUID(),
+        // id: crypto.randomUUID(),
     }
 ];
 
@@ -31,7 +31,25 @@ function addBookToLibrary(title, author, pages, read) {
     return book;
 }
 
-const books = myLibrary;
-books.forEach((book) => addBookToLibrary(book))
+// Display the books on the table
+function displayBooks() {
+    const books = myLibrary;
+    books.forEach((book) => addBookToTable(book));
+}
 
-// Event:
+// Event: Make a row of data for the newly inputted book
+function addBookToTable(book) {
+    const bookList = document.querySelector('#books-table');
+    const row = document.createElement('tr');
+    row.classList.add('table-row');
+    row.innerHTML = `
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.pages}</td>
+        <td>${book.literature}</td>
+    `;
+    bookList.appendChild(row);
+}
+
+// Event: Display the row in the table
+document.addEventListener('DOMContentLoaded', displayBooks);

@@ -56,6 +56,7 @@ function showAlert() {
     const container = document.querySelector('.document-container');
     const form = document.querySelector('#book-form')
     container.insertBefore(alertDiv, form);
+    setTimeout(() => document.querySelector('.alert-div').remove(), 5000);
 
 }
 // Event: Add inputted books to the book array

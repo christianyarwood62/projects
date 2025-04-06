@@ -34,6 +34,17 @@ function clearInputs() {
     document.querySelector('#author').value = '';
     document.querySelector('#pages').value = '';
 }
+
+// Function to delete book from the table
+function deleteBook(element) {
+    const confirmDelete = confirm("Are you sure you want to remove this book?");
+    if (confirmDelete) {
+        if (element.classList.contains('delete')) {
+            element.parentElement.remove();
+        }
+    }
+}
+
 // Event: Add inputted books to the book array
 function addBookToLibrary(title, author, pages, literature) {
     const book = new Book(title, author, pages, literature);
@@ -70,6 +81,7 @@ function addBookToTable(book) {
     row.appendChild(literatureData);
 
     const removeButton = document.createElement('td');
+    removeButton.classList.add('delete');
     removeButton.textContent = `Remove`;
     row.appendChild(removeButton);
 
@@ -107,3 +119,6 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 });
 
 // Event: Remove a book
+document.querySelector('#books-table').addEventListener('click', (e) => {
+    deleteBook(e.target);
+})

@@ -56,8 +56,23 @@ function showAlert() {
     const container = document.querySelector('.document-container');
     const form = document.querySelector('#book-form')
     container.insertBefore(alertDiv, form);
+    // The div disappears after an amount of time
     setTimeout(() => document.querySelector('.alert-div').remove(), 5000);
+}
 
+// Function to show that a book was successfully added
+function showSuccess() {
+    successDiv = document.createElement('div');
+    successDiv.classList.add('success-div');
+    successMessage = document.createElement('p');
+    successMessage.classList.add('success-message');
+    successMessage.textContent = 'Book added!';
+    successDiv.appendChild(successMessage);
+    const container = document.querySelector('.document-container');
+    const form = document.querySelector('#book-form')
+    container.insertBefore(successDiv, form);
+    // The div disappears after an amount of time
+    setTimeout(() => document.querySelector('.success-div').remove(), 5000);
 }
 // Event: Add inputted books to the book array
 function addBookToLibrary(title, author, pages, literature) {
@@ -123,6 +138,9 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     } else {
         // Instantiate a book using object constructor
         const book = new Book(title, author, pages, literature)
+
+        // Show a successful message that book was added
+        showSuccess();
 
         // Add a Book to the Table
         addBookToTable(book);

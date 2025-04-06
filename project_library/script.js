@@ -85,12 +85,6 @@ function addBookToTable(book) {
     removeButton.textContent = `Remove`;
     row.appendChild(removeButton);
 
-    // row.innerHTML = `
-    //     <td>${book.title}</td>
-    //     <td>${book.author}</td>
-    //     <td>${book.pages}</td>
-    //     <td>${book.literature}</td>
-    // `;
     bookList.appendChild(row);
 }
 

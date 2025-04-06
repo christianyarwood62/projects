@@ -102,14 +102,19 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     const pages = document.querySelector('#pages').value;
     const literature = document.querySelector('#literature').value;
 
-    // Instantiate a book using object constructor
-    const book = new Book(title, author, pages, literature)
+    // Validation to ensure inputs are filled correctly, i.e. no blanks
+    if (title === '' || author === '' || pages === '') {
+        alert('Please fill in all the fields');
+    } else {
+        // Instantiate a book using object constructor
+        const book = new Book(title, author, pages, literature)
 
-    // Add a Book to the Table
-    addBookToTable(book);
+        // Add a Book to the Table
+        addBookToTable(book);
 
-    // Clear the inputs in the form
-    clearInputs();
+        // Clear the inputs in the form
+        clearInputs();
+    }
 });
 
 // Event: Remove a book

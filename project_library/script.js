@@ -45,6 +45,19 @@ function deleteBook(element) {
     }
 }
 
+// Function to show alert box to validate that all inputs are filled and not blank
+function showAlert() {
+    alertDiv = document.createElement('div');
+    alertDiv.classList.add('alert-div');
+    alertMessage = document.createElement('p');
+    alertMessage.classList.add('alert-message');
+    alertMessage.textContent = 'Please fill in all the fields';
+    alertDiv.appendChild(alertMessage);
+    const container = document.querySelector('.document-container');
+    const form = document.querySelector('#book-form')
+    container.insertBefore(alertDiv, form);
+
+}
 // Event: Add inputted books to the book array
 function addBookToLibrary(title, author, pages, literature) {
     const book = new Book(title, author, pages, literature);
@@ -104,7 +117,8 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
     // Validation to ensure inputs are filled correctly, i.e. no blanks
     if (title === '' || author === '' || pages === '') {
-        alert('Please fill in all the fields');
+        // alert('Please fill in all the fields');
+        showAlert();
     } else {
         // Instantiate a book using object constructor
         const book = new Book(title, author, pages, literature)

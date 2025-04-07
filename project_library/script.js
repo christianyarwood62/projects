@@ -24,9 +24,9 @@ function clearInputs() {
 
 // Function to delete book from the table
 function deleteBook(element) {
-    const confirmDelete = confirm("Are you sure you want to remove this book?");
-    if (confirmDelete) {
-        if (element.classList.contains('delete')) {
+    if (element.classList.contains('delete')) {
+        const confirmDelete = confirm("Are you sure you want to remove this book?");
+        if (confirmDelete) {
             showMessage('Book removed!', 'removal');
             element.parentElement.remove();
         }
@@ -105,7 +105,7 @@ function addBookToTable(book) {
     }
     row.appendChild(readBox);
 
-    const removeButton = document.createElement('td');
+    const removeButton = document.createElement('button');
     removeButton.classList.add('delete');
     removeButton.textContent = `Remove`;
     row.appendChild(removeButton);
@@ -150,3 +150,6 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 document.querySelector('#books-table').addEventListener('click', (e) => {
     deleteBook(e.target);
 })
+
+// 
+// removeButton

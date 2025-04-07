@@ -1,20 +1,6 @@
 // Library of inputted books
-const myLibrary = [
-    {
-        title: 'harry potter',
-        author: 'J K Rowling',
-        pages: '300',
-        literature: 'Fiction',
-        // id: crypto.randomUUID(),
-    },
-    {
-        title: 'lord of the rings',
-        author: 'christian',
-        pages: '1000',
-        literature: 'Non-fiction',
-        // id: crypto.randomUUID(),
-    }
-];
+const myLibrary = []
+;
 
 // Book Constructor
 function Book(title, author, pages, literature) {
@@ -70,12 +56,14 @@ function showMessage(message, classIdentifier) {
 }
 
 // Event: Add inputted books to the book array
-function addBookToLibrary(title, author, pages, literature) {
+function addBookToLibrary(library, title, author, pages, literature) {
     const book = new Book(title, author, pages, literature);
     myLibrary.push(book);
     return book;
 }
 
+addBookToLibrary(myLibrary, "Harry Potter", "J K Rowling", 300, "Fiction");
+addBookToLibrary(myLibrary, "The Lord of the Rings", "John RR Tolkien", 1000, "Fiction");
 // Display the books on the table
 function displayBooks() {
     const books = myLibrary;

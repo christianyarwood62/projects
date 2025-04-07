@@ -3,7 +3,7 @@ const myLibrary = []
 ;
 
 // Book Constructor
-function Book(title, author, pages, literature) {
+function Book(title, author, pages, literature, status) {
     if (!new.target) {
         throw Error("You must use the 'new' keyword!");
     }
@@ -12,6 +12,7 @@ function Book(title, author, pages, literature) {
     this.author = author,
     this.pages = pages,
     this.literature = literature;
+    this.status = status;
 }
 
 // Function to clear the form inputs
@@ -92,6 +93,15 @@ function addBookToTable(book) {
     literatureData.textContent = `${changeToUpperCase(book.literature)}`;
     console.log(literatureData);
     row.appendChild(literatureData);
+
+    const readStatus = document.createElement('td');
+    const checkBox = document.querySelector('#read-status');
+    if (checkBox.checked === true) {
+        readStatus.textContent = "Read";
+    } else {
+        readStatus.textContent = "Not read";
+    }
+    row.appendChild(readStatus);
 
     const removeButton = document.createElement('td');
     removeButton.classList.add('delete');

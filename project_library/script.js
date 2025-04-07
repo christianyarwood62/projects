@@ -106,9 +106,11 @@ function addBookToTable(book) {
     row.appendChild(readBox);
 
     const removeButton = document.createElement('button');
+    const removeData = document.createElement('td');
+    removeData.appendChild(removeButton);
     removeButton.classList.add('delete');
     removeButton.textContent = `Remove`;
-    row.appendChild(removeButton);
+    row.appendChild(removeData);
 
     bookList.appendChild(row);
 }

@@ -57,16 +57,16 @@ function changeToUpperCase(string) {
 // Function to show alert message, either success, error, or book removed
 function showMessage(message, classIdentifier) {
     alertDiv = document.createElement('div');
-    alertDiv.classList.add(`${classIdentifier}-alert`);
+    alertDiv.classList.add(`${classIdentifier}-div-alert`);
     alertMessage = document.createElement('p');
-    alertMessage.classList.add('error-alert');
+    alertMessage.classList.add(`${classIdentifier}-alert`);
     alertMessage.textContent = message;
     alertDiv.appendChild(alertMessage);
     const container = document.querySelector('.document-container');
     const form = document.querySelector('#book-form')
     container.insertBefore(alertDiv, form);
     // The div disappears after an amount of time
-    setTimeout(() => document.querySelector('.error-alert').remove(), 5000);
+    setTimeout(() => document.querySelector(`.${classIdentifier}-alert`).remove(), 2000);
 }
 
 // Event: Add inputted books to the book array
@@ -136,7 +136,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
         const book = new Book(title, author, pages, literature)
 
         // Show a successful message that book was added
-        showMessage("Book was added", 'success');
+        showMessage("Book was added!", 'success');
 
         // Add a Book to the Table
         addBookToTable(book);
@@ -148,5 +148,6 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
 // Event: Remove a book
 document.querySelector('#books-table').addEventListener('click', (e) => {
+    showMessage('Book removed!', 'removal');
     deleteBook(e.target);
 })

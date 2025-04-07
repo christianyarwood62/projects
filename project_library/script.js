@@ -28,7 +28,7 @@ function deleteBook(element) {
         const confirmDelete = confirm("Are you sure you want to remove this book?");
         if (confirmDelete) {
             showMessage('Book removed!', 'removal');
-            element.parentElement.remove();
+            element.parentElement.parentElement.remove();
         }
     }
 }

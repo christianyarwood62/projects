@@ -11,7 +11,7 @@ const myLibrary = [
         title: 'lord of the rings',
         author: 'christian',
         pages: '1000',
-        literature: 'Non-Fiction',
+        literature: 'Non-fiction',
         // id: crypto.randomUUID(),
     }
 ];
@@ -45,6 +45,15 @@ function deleteBook(element) {
     }
 }
 
+// Function to capitilise each word
+function changeToUpperCase(string) {
+    const firstLetter = string.charAt(0);
+    const firstLetterCap = firstLetter.toUpperCase();
+    const remainingLetters = string.slice(1);
+    const capitilisedWord = firstLetterCap + remainingLetters;
+    return capitilisedWord;
+}
+
 // Function to show alert message, either success, error, or book removed
 function showMessage(message, classIdentifier) {
     alertDiv = document.createElement('div');
@@ -59,36 +68,6 @@ function showMessage(message, classIdentifier) {
     // The div disappears after an amount of time
     setTimeout(() => document.querySelector('.error-alert').remove(), 5000);
 }
-
-// Function to show alert box to validate that all inputs are filled and not blank
-// function showAlert() {
-//     alertDiv = document.createElement('div');
-//     alertDiv.classList.add('alert-div');
-//     alertMessage = document.createElement('p');
-//     alertMessage.classList.add('alert-message');
-//     alertMessage.textContent = 'Please fill in all the fields';
-//     alertDiv.appendChild(alertMessage);
-//     const container = document.querySelector('.document-container');
-//     const form = document.querySelector('#book-form')
-//     container.insertBefore(alertDiv, form);
-//     // The div disappears after an amount of time
-//     setTimeout(() => document.querySelector('.alert-div').remove(), 5000);
-// }
-
-// // Function to show that a book was successfully added
-// function showSuccess() {
-//     successDiv = document.createElement('div');
-//     successDiv.classList.add('success-div');
-//     successMessage = document.createElement('p');
-//     successMessage.classList.add('success-message');
-//     successMessage.textContent = 'Book added!';
-//     successDiv.appendChild(successMessage);
-//     const container = document.querySelector('.document-container');
-//     const form = document.querySelector('#book-form')
-//     container.insertBefore(successDiv, form);
-//     // The div disappears after an amount of time
-//     setTimeout(() => document.querySelector('.success-div').remove(), 5000);
-// }
 
 // Event: Add inputted books to the book array
 function addBookToLibrary(title, author, pages, literature) {
@@ -122,7 +101,8 @@ function addBookToTable(book) {
     row.appendChild(pagesData);
 
     const literatureData = document.createElement('td');
-    literatureData.textContent = `${book.literature}`;
+    literatureData.textContent = `${changeToUpperCase(book.literature)}`;
+    console.log(literatureData);
     row.appendChild(literatureData);
 
     const removeButton = document.createElement('td');
@@ -156,7 +136,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
         const book = new Book(title, author, pages, literature)
 
         // Show a successful message that book was added
-        showSuccess();
+        showMessage("Book was added", 'success');
 
         // Add a Book to the Table
         addBookToTable(book);

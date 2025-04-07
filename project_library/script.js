@@ -27,6 +27,7 @@ function deleteBook(element) {
     const confirmDelete = confirm("Are you sure you want to remove this book?");
     if (confirmDelete) {
         if (element.classList.contains('delete')) {
+            showMessage('Book removed!', 'removal');
             element.parentElement.remove();
         }
     }
@@ -94,14 +95,15 @@ function addBookToTable(book) {
     console.log(literatureData);
     row.appendChild(literatureData);
 
-    const readStatus = document.createElement('td');
-    const checkBox = document.querySelector('#read-status');
-    if (checkBox.checked === true) {
-        readStatus.textContent = "Read";
+    const readBox = document.createElement('td');
+    // readStatusCheckBox
+    const formCheckBox = document.querySelector('#read-status');
+    if (formCheckBox.checked === true) {
+        readBox.textContent = "Read";
     } else {
-        readStatus.textContent = "Not read";
+        readBox.textContent = "Not read";
     }
-    row.appendChild(readStatus);
+    row.appendChild(readBox);
 
     const removeButton = document.createElement('td');
     removeButton.classList.add('delete');
@@ -146,6 +148,5 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
 // Event: Remove a book
 document.querySelector('#books-table').addEventListener('click', (e) => {
-    showMessage('Book removed!', 'removal');
     deleteBook(e.target);
 })

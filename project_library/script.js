@@ -64,8 +64,10 @@ function addBookToLibrary(library, title, author, pages, literature) {
     return book;
 }
 
+// Add iniatial books using the Object Constructor
 addBookToLibrary(myLibrary, "Harry Potter", "J K Rowling", 300, "Fiction");
 addBookToLibrary(myLibrary, "The Lord of the Rings", "John RR Tolkien", 1000, "Fiction");
+
 // Display the books on the table
 function displayBooks() {
     const books = myLibrary;
@@ -92,18 +94,26 @@ function addBookToTable(book) {
 
     const literatureData = document.createElement('td');
     literatureData.textContent = `${changeToUpperCase(book.literature)}`;
-    console.log(literatureData);
     row.appendChild(literatureData);
 
-    const readBox = document.createElement('td');
-    // readStatusCheckBox
+    // Add checkbox button for read status to the table
+    const tableReadData = document.createElement('td');
+    const tableReadStatus = document.createElement('input');
+    const tableReadLabel = document.createElement('label');
+    tableReadStatus.type = 'checkbox';
+    tableReadStatus.classList.add('tableReadStatus');
+    tableReadData.appendChild(tableReadStatus);
+    tableReadData.appendChild(tableReadLabel);
     const formCheckBox = document.querySelector('#read-status');
     if (formCheckBox.checked === true) {
-        readBox.textContent = "Read";
+        tableReadStatus.checked = true;
+        tableReadLabel.textContent = 'Read';
+
     } else {
-        readBox.textContent = "Not read";
+        tableReadStatus.checked = false;
+        tableReadLabel.textContent = 'Not Read';
     }
-    row.appendChild(readBox);
+    row.appendChild(tableReadData);
 
     const removeButton = document.createElement('button');
     const removeData = document.createElement('td');
@@ -152,6 +162,3 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 document.querySelector('#books-table').addEventListener('click', (e) => {
     deleteBook(e.target);
 })
-
-// 
-// removeButton

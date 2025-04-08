@@ -113,6 +113,16 @@ function addBookToTable(book) {
         tableReadStatus.checked = false;
         tableReadLabel.textContent = 'Not Read';
     }
+
+    // Change input checkbox if user has read the book or not 
+    tableReadStatus.addEventListener('click', () => {
+        if (tableReadStatus.checked === true) {
+            tableReadLabel.textContent = "Read";
+        } else {
+            tableReadLabel.textContent = "Not read";
+        }
+        
+    })
     row.appendChild(tableReadData);
 
     const removeButton = document.createElement('button');

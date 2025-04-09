@@ -131,6 +131,9 @@ function addBookToTable(book) {
     removeButton.classList.add('delete');
     removeButton.textContent = `Remove`;
     row.appendChild(removeData);
+    removeButton.addEventListener('click', (e) => {
+        deleteBook(e.target);
+    })
 
     bookList.appendChild(row);
 }
@@ -172,6 +175,6 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 });
 
 // Event: Remove a book
-document.querySelector('#books-table').addEventListener('click', (e) => {
-    deleteBook(e.target);
-})
+// document.querySelector('#books-table').addEventListener('click', (e) => {
+//     deleteBook(e.target);
+// })

@@ -13,6 +13,7 @@ function Book(title, author, pages, literature, status) {
     this.pages = pages,
     this.literature = literature;
     this.status = status;
+    this.id = crypto.randomUUID();
 }
 
 // Function to clear the form inputs
@@ -24,14 +25,13 @@ function clearInputs() {
 
 // Function to delete book from the table
 function deleteBook(element) {
-    if (element.classList.contains('delete')) {
+    // if (element.classList.contains('delete')) {
         const confirmDelete = confirm("Are you sure you want to remove this book?");
         if (confirmDelete) {
-            showMessage('Book removed!', 'removal');
+            
             element.parentElement.parentElement.remove();
+            }
         }
-    }
-}
 
 // Function to capitilise each word
 function changeToUpperCase(string) {
@@ -60,8 +60,8 @@ function showMessage(message, classIdentifier) {
 // Event: Add inputted books to the book array
 function addBookToLibrary(library, title, author, pages, literature) {
     const book = new Book(title, author, pages, literature);
+    book.id = crypto.randomUUID();
     myLibrary.push(book);
-    return book;
 }
 
 // Add iniatial books using the Object Constructor
@@ -119,7 +119,7 @@ function addBookToTable(book) {
         if (tableReadStatus.checked === true) {
             tableReadLabel.textContent = "Read";
         } else {
-            tableReadLabel.textContent = "Not read";
+            tableReadLabel.textContent = "Not Read";
         }
         
     })
@@ -135,7 +135,7 @@ function addBookToTable(book) {
     bookList.appendChild(row);
 }
 
-// Event: Display the row in the table
+// Event: Display the ititial library in the table
 document.addEventListener('DOMContentLoaded', displayBooks);
 
 // Event: Add a book
@@ -155,12 +155,15 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
         showMessage('Please fill in all the fields', 'error');
     } else {
         // Instantiate a book using object constructor
-        const book = new Book(title, author, pages, literature)
+        // const book = new Book(title, author, pages, literature)
+
+        addBookToLibrary(title, author, pages, literature);
 
         // Show a successful message that book was added
         showMessage("Book was added!", 'success');
 
         // Add a Book to the Table
+        const book = new Book(title, author, pages, literature);
         addBookToTable(book);
 
         // Clear the inputs in the form

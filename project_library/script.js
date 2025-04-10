@@ -23,15 +23,20 @@ function clearInputs() {
     document.querySelector('#pages').value = '';
 }
 
-// Function to delete book from the table
-function deleteBook(element) {
-    // if (element.classList.contains('delete')) {
-        const confirmDelete = confirm("Are you sure you want to remove this book?");
-        if (confirmDelete) {
-            
-            element.parentElement.parentElement.remove();
-            }
-        }
+// // Function to delete book from the table
+// function deleteBook(element) {
+//     // if (element.classList.contains('delete')) {
+//     //     const confirmDelete = confirm("Are you sure you want to remove this book?");
+//     //     if (confirmDelete) {
+//     //         const id = myLibrary.findIndex(item => item.id === book.id);
+//     //         if (id !== -1) {
+//     //             myLibrary.splice(id, 1);
+//     //             // displayBooks();
+//     // }
+//     // }
+//             element.parentElement.parentElement.remove();
+//             }
+//         // }
 
 // Function to capitilise each word
 function changeToUpperCase(string) {
@@ -141,10 +146,21 @@ function addBookToTable(book) {
     removeButton.textContent = `Remove`;
     row.appendChild(removeData);
     removeButton.addEventListener('click', (e) => {
-        deleteBook(e.target);
+        deleteBook(book);
     })
 
     bookList.appendChild(row);
+}
+
+// Function: deletes the book from myLibrary
+function deleteBook(book) {
+    const confirmDelete = confirm("Are you sure you want to remove this book?");
+            if (confirmDelete) {
+                const id = myLibrary.findIndex(item => item.id === book.id);
+                if (id !== -1) {
+                    myLibrary.splice(id, 1);
+        }
+        }
 }
 
 // Event: Display the ititial library in the table

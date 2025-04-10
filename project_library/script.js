@@ -147,6 +147,8 @@ function addBookToTable(book) {
     row.appendChild(removeData);
     removeButton.addEventListener('click', (e) => {
         deleteBook(book);
+        deleteRows();
+        displayBooks();
     })
 
     bookList.appendChild(row);

@@ -41,7 +41,7 @@ function showMessage(message, classIdentifier) {
     alertDiv.appendChild(alertMessage);
     const container = document.querySelector('.document-container');
     const form = document.querySelector('#book-form')
-    container.insertBefore(alertDiv, form);
+    container.insertBefore(alertDiv, dialog);
     // The div disappears after an amount of time
     setTimeout(() => document.querySelector(`.${classIdentifier}-alert`).remove(), 2000);
 }
@@ -209,3 +209,15 @@ function closeNav() {
     document.querySelector("#mySidebar").style.width = "0";
     document.querySelector("#main").style.marginLeft = "0";
 }
+
+const dialog = document.querySelector("dialog");
+const showForm = document.querySelector("#show-form");
+
+
+// "Show the dialog" button opens the dialog modally
+showForm.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+// Function
+// const showForm = document.querySelector('#show-form');

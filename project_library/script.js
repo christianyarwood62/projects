@@ -95,22 +95,23 @@ function addBookToTable(book) {
     literatureData.textContent = `${book.literature}`;
     row.appendChild(literatureData);
 
-    // Add button to toggle read status on the table
+    // Add button to toggle read status on the table, changing the color too
     const tableReadData = document.createElement('td');
     const tableReadCheckBox = document.createElement('input');
     tableReadCheckBox.type = 'checkbox'
     tableReadCheckBox.classList.add('table-read-status');
-
+    tableReadData.appendChild(tableReadCheckBox);
     const readCheckBoxLabel = document.createElement('label');
     tableReadData.appendChild(readCheckBoxLabel);
     if (book.status === true) {
         tableReadCheckBox.checked = true;
         readCheckBoxLabel.textContent = 'Read';
+        row.style.backgroundColor = 'lightgreen';
     } else {
         tableReadCheckBox.checked = false;
         readCheckBoxLabel.textContent = 'Not read';
+        row.style.backgroundColor = 'lightcoral';
     }
-    tableReadData.appendChild(tableReadCheckBox);
     row.appendChild(tableReadData);
 
     // Event: Change the read status on the table using the button

@@ -15,6 +15,10 @@ table, th, td {
     border: 1px solid black;
 }
 
+#table {
+    width: 100vh;
+}
+
 /* The sidebar menu */
 .sidebar {
     height: 100%; /* 100% Full-height */

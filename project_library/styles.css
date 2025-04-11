@@ -17,6 +17,7 @@ table, th, td {
 
 #table {
     width: 100vh;
+    margin-top: 100px;
 }
 
 /* The sidebar menu */

@@ -3,7 +3,7 @@ const myLibrary = []
 ;
 
 // Book Constructor
-function Book(title, author, pages, literature) {
+function Book(title, author, pages, literature, status) {
     if (!new.target) {
         throw Error("You must use the 'new' keyword!");
     }
@@ -12,7 +12,7 @@ function Book(title, author, pages, literature) {
     this.author = author,
     this.pages = pages,
     this.literature = literature;
-    // this.status = status;
+    this.status = status;
     this.id = crypto.randomUUID();
 }
 
@@ -63,8 +63,8 @@ function showMessage(message, classIdentifier) {
 }
 
 // Event: Add inputted books to the book array
-function addBookToLibrary(title, author, pages, literature) {
-    const book = new Book(title, author, pages, literature);
+function addBookToLibrary(title, author, pages, literature, status) {
+    const book = new Book(title, author, pages, literature, status);
     book.id = crypto.randomUUID();
     myLibrary.push(book);
 }
@@ -77,8 +77,8 @@ function deleteRows() {
 }
 
 // Add iniatial books using the Object Constructor
-addBookToLibrary("Harry Potter", "J K Rowling", 300, "Fiction");
-addBookToLibrary("The Lord of the Rings", "John RR Tolkien", 1000, "Non-fiction");
+addBookToLibrary("Harry Potter", "J K Rowling", 300, "Fiction", true);
+addBookToLibrary("The Lord of the Rings", "John RR Tolkien", 1000, "Non-fiction", false);
 
 
 // Display the books on the table
@@ -110,23 +110,31 @@ function addBookToTable(book) {
     literatureData.textContent = `${book.literature}`;
     row.appendChild(literatureData);
 
-    // // Add checkbox button for read status to the table
-    // const tableReadData = document.createElement('td');
-    // const tableReadStatus = document.createElement('input');
-    // const tableReadLabel = document.createElement('label');
-    // tableReadStatus.type = 'checkbox';
-    // tableReadStatus.classList.add('tableReadStatus');
-    // tableReadData.appendChild(tableReadStatus);
-    // tableReadData.appendChild(tableReadLabel);
-    // const formCheckBox = document.querySelector('#read-status');
-    // if (formCheckBox.checked === true) {
-    //     tableReadStatus.checked = true;
-    //     tableReadLabel.textContent = 'Read';
+    // Add button for read status to the table
+    const tableReadData = document.createElement('td');
+    const tableReadStatus = document.createElement('button');
+    if (book.status === true) {
+        tableReadStatus.textContent = 'Read';
+        console.log(`${book.status} ready`)
+    } else {
+        console.log(`${book.status} test`)
+        tableReadStatus.textContent = 'Not read';
+    }
+    tableReadData.appendChild(tableReadStatus);
+            // const tableReadLabel = document.createElement('label');
+            // tableReadStatus.type = 'checkbox';
+            // tableReadStatus.classList.add('tableReadStatus');
+            // tableReadData.appendChild(tableReadStatus);
+            // tableReadData.appendChild(tableReadLabel);
+            // const formCheckBox = document.querySelector('#read-status');
+            // if (formCheckBox.checked === true) {
+            //     tableReadStatus.checked = true;
+            //     tableReadLabel.textContent = 'Read';
 
-    // } else {
-    //     tableReadStatus.checked = false;
-    //     tableReadLabel.textContent = 'Not Read';
-    // }
+            // } else {
+            //     tableReadStatus.checked = false;
+            //     tableReadLabel.textContent = 'Not Read';
+            // }
 
     // Change input checkbox if user has read the book or not 
     // tableReadStatus.addEventListener('click', () => {
@@ -137,7 +145,7 @@ function addBookToTable(book) {
     //     }
         
     // })
-    // row.appendChild(tableReadData);
+    row.appendChild(tableReadData);
 
     const removeButton = document.createElement('button');
     const removeData = document.createElement('td');
@@ -178,7 +186,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     const author = document.querySelector('#author').value;
     const pages = document.querySelector('#pages').value;
     const literature = changeToUpperCase(document.querySelector('#literature').value);
-    // const status = document.querySelector('#read-status').value;
+    const status = document.querySelector('#read-status').checked;
 
     // Validation to ensure inputs are filled correctly, i.e. no blanks
     if (title === '' || author === '' || pages === '') {
@@ -192,7 +200,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
         bookForm.reset();
 
         // Add the books to myLibrary
-        addBookToLibrary(title, author, pages, literature);
+        addBookToLibrary(title, author, pages, literature, status);
 
         // Adds the books from myLibrary to the table
         displayBooks();

@@ -95,17 +95,22 @@ function addBookToTable(book) {
     literatureData.textContent = `${book.literature}`;
     row.appendChild(literatureData);
 
-    // Add button for read status to the table
+    // Add button to toggle read status on the table
     const tableReadData = document.createElement('td');
     const tableReadButton = document.createElement('button');
+    tableReadButton.classList.add('table-read-status');
     if (book.status === true) {
         tableReadButton.textContent = 'Read';
     } else {
         tableReadButton.textContent = 'Not read';
     }
     tableReadData.appendChild(tableReadButton);
-
     row.appendChild(tableReadData);
+
+    // Event: Change the read status on the table using the button
+    tableReadButton.addEventListener('click', () => {
+        changeReadStatus(book);
+    })
 
     // Make a remove button and add it to the books in the table
     const removeButton = document.createElement('button');
@@ -114,7 +119,7 @@ function addBookToTable(book) {
     removeButton.classList.add('delete');
     removeButton.textContent = `Remove`;
     row.appendChild(removeData);
-    removeButton.addEventListener('click', (e) => {
+    removeButton.addEventListener('click', () => {
         deleteBook(book);
         deleteRows();
         displayBooks();
@@ -123,6 +128,30 @@ function addBookToTable(book) {
     // Add the row to the table of books
     bookList.appendChild(row);
 }
+
+// Function: changes read status of books in the table
+function changeReadStatus(book) {
+    const id = myLibrary.findIndex(item => item.id === book.id);
+        if (id !== -1) {
+            if (book.status === true) {
+                book.status = false;
+            } else {
+                book.status = true;
+            }
+        }
+    deleteRows();
+    displayBooks();
+}
+    // Event: Change read status of books in the table
+    // const tableReadButton = document.querySelector('#table-read-status');
+    // tableReadButton.addEventListener('click', (e) => {
+    //     if (tableReadButton.textContent = 'Read') {
+    //         tableReadButton.textContent = 'Not read';
+    //     };
+    //     if (tableReadButton.textContent = 'Not read') {
+    //         tableReadButton.textContent = 'test';
+    //     }
+    // })
 
 // Function: deletes the book from myLibrary
 function deleteBook(book) {

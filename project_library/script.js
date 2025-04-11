@@ -97,18 +97,24 @@ function addBookToTable(book) {
 
     // Add button to toggle read status on the table
     const tableReadData = document.createElement('td');
-    const tableReadButton = document.createElement('button');
-    tableReadButton.classList.add('table-read-status');
+    const tableReadCheckBox = document.createElement('input');
+    tableReadCheckBox.type = 'checkbox'
+    tableReadCheckBox.classList.add('table-read-status');
+
+    const readCheckBoxLabel = document.createElement('label');
+    tableReadData.appendChild(readCheckBoxLabel);
     if (book.status === true) {
-        tableReadButton.textContent = 'Read';
+        tableReadCheckBox.checked = true;
+        readCheckBoxLabel.textContent = 'Read';
     } else {
-        tableReadButton.textContent = 'Not read';
+        tableReadCheckBox.checked = false;
+        readCheckBoxLabel.textContent = 'Not read';
     }
-    tableReadData.appendChild(tableReadButton);
+    tableReadData.appendChild(tableReadCheckBox);
     row.appendChild(tableReadData);
 
     // Event: Change the read status on the table using the button
-    tableReadButton.addEventListener('click', () => {
+    tableReadCheckBox.addEventListener('click', () => {
         changeReadStatus(book);
     })
 

@@ -149,16 +149,6 @@ function changeReadStatus(book) {
     deleteRows();
     displayBooks();
 }
-    // Event: Change read status of books in the table
-    // const tableReadButton = document.querySelector('#table-read-status');
-    // tableReadButton.addEventListener('click', (e) => {
-    //     if (tableReadButton.textContent = 'Read') {
-    //         tableReadButton.textContent = 'Not read';
-    //     };
-    //     if (tableReadButton.textContent = 'Not read') {
-    //         tableReadButton.textContent = 'test';
-    //     }
-    // })
 
 // Function: deletes the book from myLibrary
 function deleteBook(book) {

@@ -97,15 +97,13 @@ function addBookToTable(book) {
 
     // Add button for read status to the table
     const tableReadData = document.createElement('td');
-    const tableReadStatus = document.createElement('button');
+    const tableReadButton = document.createElement('button');
     if (book.status === true) {
-        tableReadStatus.textContent = 'Read';
-        console.log(`${book.status} ready`)
+        tableReadButton.textContent = 'Read';
     } else {
-        console.log(`${book.status} test`)
-        tableReadStatus.textContent = 'Not read';
+        tableReadButton.textContent = 'Not read';
     }
-    tableReadData.appendChild(tableReadStatus);
+    tableReadData.appendChild(tableReadButton);
 
     row.appendChild(tableReadData);
 

@@ -165,7 +165,7 @@ function deleteBook(book) {
 document.addEventListener('DOMContentLoaded', displayBooks);
 
 // Event: Add a book
-document.querySelector('#book-form').addEventListener('submit', (e) => {
+document.querySelector('#submit-book').addEventListener('click', (e) => {
     // Prevents the event listener from just submitting
     e.preventDefault();
 
@@ -193,6 +193,8 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
         // Adds the books from myLibrary to the table
         displayBooks();
 
+        // Close the dialog box if form is filled
+        dialog.close()
         // Show a successful message that book was added
         showMessage("Book was added!", 'success');
     }
@@ -217,6 +219,15 @@ const showForm = document.querySelector("#show-form");
 // "Show the dialog" button opens the dialog modally
 showForm.addEventListener("click", () => dialog.showModal());
 
-// Event: Close the form when a book is submitted
-const submitBook = document.querySelector('#submit-book');
-submitBook.addEventListener('click', () => dialog.close());
+// Event: Close the form when a book is submitted or cancelled
+// const submitBook = document.querySelector('#submit-book');
+// submitBook.addEventListener('click', () => {
+//     if (title === '' || author === '' || pages === '') {
+//         showMessage('Please fill in all the fields', 'error');
+//         dialog.showModal();
+//     } else {
+//         // dialog.close()
+//     }
+// });
+const closeForm = document.querySelector('#cancel-form');
+closeForm.addEventListener('click', () => dialog.close());

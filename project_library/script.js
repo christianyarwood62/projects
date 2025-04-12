@@ -215,9 +215,8 @@ const showForm = document.querySelector("#show-form");
 
 
 // "Show the dialog" button opens the dialog modally
-showForm.addEventListener("click", () => {
-  dialog.showModal();
-});
+showForm.addEventListener("click", () => dialog.showModal());
 
-// Function
-// const showForm = document.querySelector('#show-form');
+// Event: Close the form when a book is submitted
+const submitBook = document.querySelector('#submit-book');
+submitBook.addEventListener('click', () => dialog.close());

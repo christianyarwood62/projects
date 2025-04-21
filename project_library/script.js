@@ -1,26 +1,34 @@
 // Library of inputted books
-const myLibrary = []
-;
+const myLibrary = [];
 
-// Book Constructor
-function Book(title, author, pages, literature, status) {
-    if (!new.target) {
-        throw Error("You must use the 'new' keyword!");
+// Class of a book
+class Book {
+    constructor(title, author, pages, literature, status) {
+        if (!new.target) {
+            throw Error("You must use the 'new' keyword!");
+        }
+        this.title = title,
+        this.author = author,
+        this.pages = pages,
+        this.literature = literature;
+        this.status = status;
+        this.id = crypto.randomUUID();
     }
-    this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.literature = literature;
-    this.status = status;
-    this.id = crypto.randomUUID();
 }
+// // Book Constructor
+// function Book(title, author, pages, literature, status) {
+//     if (!new.target) {
+//         throw Error("You must use the 'new' keyword!");
+//     }
+//     this.title = title,
+//     this.author = author,
+//     this.pages = pages,
+//     this.literature = literature;
+//     this.status = status;
+//     this.id = crypto.randomUUID();
+// }
 
-// Function to clear the form inputs
-function clearInputs() {
-    document.querySelector('#title').value = '';
-    document.querySelector('#author').value = '';
-    document.querySelector('#pages').value = '';
-}
+
 
 // Function to capitilise each word
 function changeToUpperCase(string) {
